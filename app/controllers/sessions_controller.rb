@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email:email_params[:email])
@@ -19,6 +18,7 @@ class SessionsController < ApplicationController
   end
 
   private
+
   def log_in(user)
     session[:user_id] = user.id
   end
@@ -26,9 +26,12 @@ class SessionsController < ApplicationController
   def log_out
     session.delete(:user_id)
     @current_user = nil
-  def email_params
-    params.require(:session).permit(:email)
-  def password_params
-    params.require(:session).permit(:password)
   end
-end
+    def email_params
+      params.require(:session).permit(:email)
+    end
+
+    def password_params
+      params.require(:session).permit(:password)
+    end
+  end
