@@ -1,14 +1,14 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
-  end  
+    @topics = Topic.all.includes(:favorite_users)
+  end
   def new
     @topic = Topic.new
   end
 
   def create
     @topic = current_user.topics.new(topic_params)
-
+    
     if @topic.save
       redirect_to topics_path, success: '投稿成功'
     else

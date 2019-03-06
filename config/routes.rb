@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'topics/new'
+
   get 'sessions/new'
-  get 'users/new'
   get 'pages/index'
   root 'pages#index'
   get 'pages/help'
@@ -12,5 +11,10 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   resources :users
-  resources :topics
+  resources :topics do
+    resources :comments
+  end
+
+  get 'favorites/index'
+  post '/favorites', to: 'favorites#create'
 end
