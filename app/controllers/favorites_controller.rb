@@ -14,4 +14,9 @@ end
       redirect_to topics_path, danger: 'いいねに失敗しました'
     end
   end
-end
+  def destroy
+    favorite = Favorite.find_by(user_id: current_user.id ,topic_id: params[:topic_id])
+    favorite.destroy
+    redirect_to topics_path, danger: 'いいね解除したよ'
+    end
+  end
