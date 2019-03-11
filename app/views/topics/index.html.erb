@@ -13,7 +13,7 @@
               <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
               <% end %>
             <% else %>
-            <%= link_to topic_favorite_path, method: :delete do %>
+            <%= link_to favorites_destroy_path(topic_id: topic.id), method: :delete do %>
               <%= image_tag 'icons/5b3a9ce2183f0.png', class: 'topic-index-icon' %>
             <% end %>
             <% end %>
